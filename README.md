@@ -9,42 +9,54 @@ This repository is the **public** place to recompute textbook toy examples and r
 Textbook manuscript sources remain on the author’s machine / private archives.  
 Canonical public URL: <https://github.com/Slabestone/llm-textbook>
 
+## Layout
+
+| Path | Contents |
+|---|---|
+| `verify/chapter1/` | Bigram / overfitting / optimizer / mini-Transformer / EP13 Attention toy / gradient audit |
+| `verify/chapter2/` | Volume-2 arithmetic checks |
+| `verify/chapter4/` | SFT/LoRA/DPO/Inference/RAG/Agent quantitative figure generator |
+| `verify/chapter5/` | EP28–32 multimodal toy scripts cited by Chapter 5 |
+| `data/` | `.dat` / `.json` curve tables used by book figures |
+| `references/bibliography.tex` | Unified Author `(year)` bibliography block |
+
 ## Quick start
 
 ```bash
 git clone https://github.com/Slabestone/llm-textbook.git
 cd llm-textbook
 
-# Chapter 2 arithmetic (stdlib only)
 python3 verify/chapter2/volume2_checks.py
-python3 verify/chapter2/volume2_extended_checks.py
-
-# Chapter 1 toy experiments (stdlib / numpy if listed in script headers)
-python3 verify/chapter1/llm_vol1_ch08_overfitting_v04.py
-python3 verify/chapter1/llm_vol1_ch09_optimizer_2d_v01.py
 python3 verify/chapter1/llm_vol1_ch10_bigram_train_eval_v01.py
+python3 verify/chapter1/course_ep13_toy_trace_v01.py
+python3 verify/chapter1/ch01_unified_numeric_grad_audit_v01.py
+python3 verify/chapter4/llm_iv_v05_plot_recompute.py
 ```
 
-Curve `.dat` files used by the book figures live under `data/`.
-
-PDF structural gate (optional; needs `pypdf`):
+Chapter 5 toys (examples):
 
 ```bash
-python3 -m pip install pypdf
-python3 verify/preflight/pdf_structure_gate_v02.py /path/to/book.pdf /path/to/book.log
+python3 verify/chapter5/ep28_vq_fsq_nearest_code_math_toy_v01.py
+python3 verify/chapter5/ep29_diffusion_flow_matching_toy_v01.py
 ```
 
-## Bibliography
+## Name map (book prose → public path)
 
-Unified Author `(year). Title. Venue. URL.` entries:
-
-- [`references/bibliography.tex`](references/bibliography.tex) — `\bibitem{...}` block for XeLaTeX `\begin{thebibliography}`
+| Book historical filename | Public path |
+|---|---|
+| `LLM_单书_第1章_微型Transformer复算_v0.3_….py` | `verify/chapter1/ch01_mini_transformer_recompute_v03.py` |
+| `llm_vol1_ch10_bigram_train_generate_v02.py` | `verify/chapter1/llm_vol1_ch10_bigram_train_generate_v02.py` |
+| `05_制作工程/course_ep13_toy_trace_v01.py` | `verify/chapter1/course_ep13_toy_trace_v01.py` |
+| `LLM_教材_第一卷_统一数值与梯度复核_v0.1_….py` | `verify/chapter1/ch01_unified_numeric_grad_audit_v01.py` |
+| `LLM_IV_v0.5_定量作图与复算.py` | `verify/chapter4/llm_iv_v05_plot_recompute.py` |
+| `LLM_IV_v0.5_计算图原始数据.json` | `data/llm_iv_v05_figure_raw_data.json` |
+| `05_制作工程/ep28_….py` … `ep32_….py` | `verify/chapter5/ep28_….py` … |
 
 Cite this repository from the book as key `llmtextbook`.
 
 ## Version
 
-Aligned with textbook **v2.6** (2026-11-11).
+Aligned with textbook **v2.8** (2026-11-11): public path replacement pass for remaining Mac-local citations.
 
 ## License
 
