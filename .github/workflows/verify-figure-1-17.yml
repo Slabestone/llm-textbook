@@ -1,0 +1,31 @@
+name: Verify textbook Figure 1.17
+
+on:
+  push:
+    paths:
+      - "verify/chapter1/llm_vol1_ch10_bigram_train_eval_v01.py"
+      - "verify/chapter1/reproduce_figure_1_17.py"
+      - "data/llm_vol1_ch10_learning_curves_v01.dat"
+      - ".github/workflows/verify-figure-1-17.yml"
+  pull_request:
+    paths:
+      - "verify/chapter1/llm_vol1_ch10_bigram_train_eval_v01.py"
+      - "verify/chapter1/reproduce_figure_1_17.py"
+      - "data/llm_vol1_ch10_learning_curves_v01.dat"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  numerical-provenance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out public source and figure data
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Recompute training trajectory and compare data byte-for-byte
+        run: python3 verify/chapter1/reproduce_figure_1_17.py
