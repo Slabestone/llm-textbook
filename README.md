@@ -40,6 +40,21 @@ python3 verify/chapter5/ep28_vq_fsq_nearest_code_math_toy_v01.py
 python3 verify/chapter5/ep29_diffusion_flow_matching_toy_v01.py
 ```
 
+## Figure 1.17: early stopping (fully reproducible)
+
+The training/validation curves in §1.11.5 come from a deterministic,
+16-parameter conditional Bigram experiment (not Transformer training).
+Regenerate all 121 data rows and verify them **byte-for-byte** against
+the public plotting table:
+
+```bash
+python3 verify/chapter1/reproduce_figure_1_17.py
+```
+
+See [Figure 1.17 provenance, selected checkpoint vs. raw minimum,
+and plotting instructions](verify/chapter1/README_figure_1_17.md).
+The repository also includes an independent [GitHub Actions check](.github/workflows/verify-figure-1-17.yml).
+
 ## Name map (book prose → public path)
 
 | Book historical filename | Public path |
